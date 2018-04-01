@@ -24,6 +24,7 @@ buildscript {
       'retrofit': '2.4.0',
       'kotshi': '1.0.1',
       'dagger': '2.15',
+      'sqldelight': '1.0.0-SNAPSHOT'
   ]
 
   ext.deps = [
@@ -102,10 +103,14 @@ buildscript {
       'timber': 'com.jakewharton.timber:timber:4.7.0',
       'junit': 'junit:junit:4.12',
       'truth': 'com.google.truth:truth:0.39',
-      'sqlBrite': 'com.squareup.sqlbrite3:sqlbrite-kotlin:3.2.0',
       'bugsnag': 'com.bugsnag:bugsnag-android:4.2.2',
       'argparser': 'com.xenomachina:kotlin-argparser:2.0.5',
       'byteunits': 'com.jakewharton.byteunits:byteunits:0.9.1',
+      'sqldelight': [
+          'android': "com.squareup.sqldelight:android-driver:${versions.sqldelight}",
+          'rx2': "com.squareup.sqldelight:rxjava2-extensions:${versions.sqldelight}",
+          'runtime': "com.squareup.sqldelight:runtime:${versions.sqldelight}",
+      ]
   ]
 
   ext.isCiBuild = System.getenv('CI') == 'true'
@@ -122,7 +127,7 @@ buildscript {
     classpath 'com.android.tools.build:gradle:3.2.0-alpha08'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
     classpath "org.jetbrains.kotlinx:kotlinx-gradle-serialization-plugin:${versions.kotlinSerialization}"
-    classpath 'com.squareup.sqldelight:gradle-plugin:1.0.0-SNAPSHOT'
+    classpath "com.squareup.sqldelight:gradle-plugin:${versions.sqldelight}"
     classpath 'com.eriwen:gradle-js-plugin:1.12.1'
     classpath 'com.github.triplet.gradle:play-publisher:1.2.0'
     classpath 'gradle.plugin.org.jlleitschuh.gradle:ktlint-gradle:3.2.0'

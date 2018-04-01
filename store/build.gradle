@@ -1,7 +1,10 @@
 apply plugin: 'org.jetbrains.kotlin.platform.common'
+apply plugin: 'com.squareup.sqldelight'
 
 dependencies {
   implementation deps.kotlin.stdlib.common
+  implementation deps.sqldelight.runtime
+
   testImplementation deps.kotlin.test.common
   testImplementation deps.kotlin.test.annotations
 }
@@ -10,4 +13,8 @@ kotlin {
   experimental {
     coroutines 'enable'
   }
+}
+
+sqldelight {
+  packageName = "com.jakewharton.sdksearch.store"
 }

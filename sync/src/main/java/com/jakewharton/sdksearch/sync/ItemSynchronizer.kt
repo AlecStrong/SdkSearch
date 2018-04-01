@@ -1,8 +1,8 @@
 package com.jakewharton.sdksearch.sync
 
 import com.jakewharton.sdksearch.api.dac.DocumentationService
-import com.jakewharton.sdksearch.store.Item
 import com.jakewharton.sdksearch.store.ItemStore
+import com.jakewharton.sdksearch.store.ItemUtil
 import com.jakewharton.sdksearch.sync.ItemSynchronizer.LoaderEvent.ForceSync
 import com.jakewharton.sdksearch.sync.ItemSynchronizer.LoaderEvent.LoadResult
 import kotlinx.coroutines.experimental.channels.ConflatedChannel
@@ -67,7 +67,7 @@ class ItemSynchronizer(
 
     val items = apiItems
         .filter { it.type == "class" }
-        .map { Item.createForInsert(it.label, it.link, it.deprecated) }
+        .map { ItemUtil.createForInsert(it.label, it.link, it.deprecated) }
 
     try {
       itemStore.updateItems(items)
